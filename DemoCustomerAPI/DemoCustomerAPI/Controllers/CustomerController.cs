@@ -14,13 +14,17 @@ namespace DemoCustomerAPI.Controllers
         public CustomerController(ICustomerService service) {
         customerService = service;
         }
+        [Route("GetAllCustomers")]
         [HttpGet]
+             
         public IActionResult GetAllCustomers()
         {
             var cust = customerService.GetAll();
             return Ok(cust);
         }
+        //[Route("GetCustomersById")]
         [HttpGet("{id}")]
+       
         public IActionResult GetCustomersById(int id) 
         { 
             if(ModelState.IsValid)
@@ -40,7 +44,9 @@ namespace DemoCustomerAPI.Controllers
                 return BadRequest("Invalid ID"); 
             }
         }
+        [Route("AddCustomer")]
         [HttpPost]
+        
         public IActionResult AddCustomer(CustomerModel cust)
         {
             if(ModelState.IsValid)
@@ -66,7 +72,9 @@ namespace DemoCustomerAPI.Controllers
                 return BadRequest("Invalid input");
             }
         }
+        [Route("DeleteCustomer")]
         [HttpDelete]
+        
         public IActionResult DeleteCustomer(int id)
         {
             if (id < 0)
@@ -85,7 +93,9 @@ namespace DemoCustomerAPI.Controllers
                 }
             }
         }
+        [Route("UpdateCustomer")]
         [HttpPut]
+        
         public IActionResult UpdateCustomer(int id,CustomerModel customer)
         {
             if(ModelState.IsValid)
