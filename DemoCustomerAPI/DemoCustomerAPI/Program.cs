@@ -20,6 +20,10 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 builder.Services.AddScoped<ICustomerRepository,CustomerRepository1>();
 builder.Services.AddScoped<ICustomerService,CustomerService1>();
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
